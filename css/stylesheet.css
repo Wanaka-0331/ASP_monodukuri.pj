@@ -1,0 +1,476 @@
+/*全体*/
+html{
+    font-family: 'Inter';
+    color: #232F49;
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0 !important;
+}
+h1{
+    font-size: 40px;
+    margin: 0;
+}
+h2{
+    font-size: 32px;
+    margin: 10px 0px;
+}
+h3{
+    font-size: 24px;
+    margin: 0;
+}
+li{
+    list-style: none;
+    padding: 15px;
+}
+p{
+    font-size: 16px;
+    margin: 0.5px;
+}
+a{
+    text-decoration: none;
+}
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+@media (max-width: 768px){
+    h1{
+        font-size: 32px;
+    }
+    h2{
+        font-size: 24px;
+    }
+    h3{
+        font-size: 16px;
+    }
+    p{
+        font-size: 14px;
+    }
+    a{
+        font-size: 14px;
+    }
+    main{
+        padding: 5px;
+    }
+    *,
+    *::before,
+    *::after{
+        box-sizing: border-box;
+    }
+}
+
+/* ヘッダー全体 */
+#header {
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: rgba(35,47,73,0.07);
+}
+/* ロゴ */
+.logo {
+    height: auto;
+    width: 60%;
+    margin: 0 auto;
+}
+/* ハンバーガーボタン */
+.openbtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002; /* メニューより前面に表示 */
+}
+.openbtn span {
+    display: block;
+    height: 3px;
+    background-color: #232F49;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* open状態の時のハンバーガーボタン */
+.openbtn.open span {
+    background-color: #fff; /* ばつに変わったときに色を白に */
+}
+.openbtn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+.openbtn.open span:nth-child(2) {
+    opacity: 0;
+}
+.openbtn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+/* ナビゲーションメニュー */
+#g-nav {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+#g-nav.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+#g-nav-list ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+#g-nav-list ul li {
+    margin: 15px 0;
+    position: relative;
+    transition: height 0.3s ease;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+#g-nav-list ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 20px;
+}
+/* ドロップダウンメニュー */
+.has-child {
+    position: relative;
+    overflow: hidden;
+}
+.touch-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+    z-index: 1002;
+}
+.touch-btn .chevron {
+    display: inline-block;
+    transition: transform 0.3s ease; /* スムーズな回転アニメーション */
+}
+.has-child.open .chevron {
+    transform: rotate(180deg); /* 「△」に変更 */
+}
+.has-child.open .dropdown {
+    height: auto; /* 自動で高さを設定 */
+    opacity: 1;  /* ドロップダウンメニューを表示 */
+    visibility: visible; /* 見えるようにする */
+}
+/* ドロップダウンメニューのスタイル */
+.dropdown {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    top: 100%;
+    left: 0;
+    z-index: 9999;
+}
+.dropdown li {
+    margin: 0;
+    padding: 5px;
+}
+.dropdown li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+.body{
+    margin: 0;
+    padding: 0;
+}
+/*タイトル*/
+.wrap-title{
+    width: 100%;
+    margin: 20px 0px;
+    text-align: center;
+    font-size: 32px;
+}
+@media (max-width: 425px){
+    .wrap-title{
+        font-size: 24px;
+    }
+}
+
+/*フッター*/
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background-color: rgba(141,171,197,0.07);
+    text-align: center;
+    padding: 20px 0px;
+}
+.character-2{
+    width: 15%;
+    float: left;
+    flex-shrink: 0;
+}
+@media (max-width: 425px) {
+    footer{
+        flex-direction: column;
+    }
+}
+
+/*以下各ページのCSS*/
+/*ボディ-トップ*/
+.wrap-about {
+    display: flex; /* フレックスコンテナに設定 */
+    align-items: center; /* 縦方向を中央揃え */
+    justify-content: center; /* 必要に応じて全体の配置を調整 */
+    gap: 10px; /* 画像とテキストの間に余白を追加 */
+    margin: 20px 0;
+}
+.utyu-img {
+    max-width: 200px;
+    height: auto;
+    flex-shrink: 0; /* サイズが縮小しないように設定 */
+}
+.content-about {
+    margin: 0;
+    width: 60%;
+    padding: 20px;
+    z-index: 5;
+}
+.hanashi {
+    display: inline-block; /* ボタンの幅を調整 */
+    margin-top: 20px; /* 上に余白を追加 */
+    text-align: center;
+    padding: 15px 30px; /* ボタンのサイズ調整 */
+    background-color: #232F49;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.hanashi a {
+    text-decoration: none;
+    color: white;
+}
+.character-1{
+    position: absolute;
+    right: 0;
+    width: 15%;
+    height: auto;
+    margin-left: 20px;
+    z-index: 2;
+}
+@media (max-width: 425px){
+    .utyu-img{
+        width: 30%;
+        margin-left: 10px;
+    }
+    .content-about{
+        word-break: normal;
+        width: 70%;
+        padding: 10px;
+    }
+    .hanashi{
+        padding: 10px;
+    }
+    .hanashi a{
+        font-size: 8px;
+    }
+    .character-1{
+        display: none;
+    }
+}
+.wrap-sensei{
+    width: 100%;
+    height: auto;
+    padding: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.sensei-name{
+    font-size: 32px;
+}
+.image{
+    width: 30%;
+    right: 15px;
+    padding-right: 15px;
+    z-index: 0;
+}
+.teacher-img{
+    width: 100%;
+}
+.content-hitokoto{
+    text-align: left;
+    width: 70%;
+    z-index: 900;
+    background-color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    padding: 15px;
+
+}
+/*先生　レスポンシブ*/
+@media (max-width: 425px){
+    .sensei-name{
+        font-size: 24px;
+    }
+    .teacher-img{
+        width: 100%;
+        width: 70%;
+        height: 300px;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;
+
+    }    
+    .image{
+        width: 100%;
+        /*height: 300px;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;*/
+    }
+    .content-hitokoto{
+        width: 100%;
+        padding: 0 0 10px 0;
+        margin: 0;
+    }
+}
+.wrap-han{
+    text-align: center;
+    background-image: url(../img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 0;
+    z-index: 2;
+}
+.han{
+    margin: 0;
+    padding: 20px 0;
+    color: #fff;
+}
+.item-han{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+.han-1, .han-2, .han-3, .han-4{
+    width: 250px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 30px white;
+}
+.hanimg-1, .hanimg-2, .hanimg-3, .hanimg-4{
+    aspect-ratio: 16 / 9;
+    width: 250px;
+    height: auto;
+}
+.name-han{
+    text-align: center;
+}
+.about-han{
+    margin: 10px;
+    text-align: center;
+}
+.shousai{
+    float: right;
+    text-decoration: underline;
+    margin: 0px 20px 10px 0px;
+}
+@media (max-width: 425px){
+    .wrap-han{
+        padding: 10px;
+    }
+    .han-1, .han-2, .han-3, .han-4{
+        width: 200px;
+        margin: 20px 10px;
+    }
+    .hanimg-1, .hanimg-2, .hanimg-3, .hanimg-4{
+        width: 200px;
+    }
+}
+/*ボディ-活動班*/
+.wrap-tentai, .wrap-jikken, 
+.wrap-kousaku, .wrap-seikatu{
+    text-align: center;
+    padding: 30px 0;
+    width: 100%;
+    height: auto;
+    align-items: center;
+}
+.about-tentai, .about-jikken, 
+.about-kousaku, .about-seikatu{
+    margin: 0 auto;
+    align-items: center;
+    width: 60%;
+    padding: 30px;
+    background-color: rgba(255,255,255,0.9);
+    position: relative;
+}
+.tentai-img, .jikken-img, 
+.kousaku-img, .seikatu-img{
+    aspect-ratio: 1/1;
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+    margin: 0 40px 20px;
+    border-radius: 100%;
+}
+.tentai-img, .kousaku-img{
+    float: left;
+}
+.jikken-img, .seikatu-img{
+    float: right;
+}
+@media (max-width: 425px) {
+    .about-tentai, .about-jikken, 
+    .about-kousaku, .about-seikatu{
+        width: 80%;
+        background-color: rgba(255,255,255,0.25);
+    }
+    .tentai-img, .jikken-img, 
+    .kousaku-img, .seikatu-img{
+        z-index: 30;
+    }
+}
+
+
+/*ボディ-問い合わせ*/
+.box-place{
+    padding-bottom: 20px;
+}
+.place-img{
+    aspect-ratio: 16 / 9;
+    width: 70%;
+    height: auto;
+}
+.wrap-place, .wrap-time, .wrap-contact{
+    text-align: center;
+    margin: 20px 0px;
+    justify-content: center;
+}
